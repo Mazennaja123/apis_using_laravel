@@ -47,4 +47,31 @@ class algorithm_controller extends Controller
                 }
 
 
+function place_number_value($number){
+
+    $final_result=[];
+    $modulo_number=10;
+    $size=strlen($number);
+    //Go to each loop and subtract the thousands from the hundreds ,etc. Then save them in Final result array
+    $i=1;
+    for($i;$i<=$size;$i++){
+      if($size==1 or $i==1)
+          $final_result[$i-1]=$number%10^$i;
+      elseif($size==2 or $i==2)
+          $final_result[$i-1]=($number%10^$i)-($number%10^($i-1));
+      else{
+          for ($j=1; & $j<$i ; $j++) {
+            $final_result[$i-1]= ($number%10^$i)-($number%10^$j);
+          }
+      }
+    }
+      return response()->json([
+          "status" => "Success",
+          "number_places" => $final_result,
+          "size"=>$size
+      ]);
+
+      }
+
+
 }
