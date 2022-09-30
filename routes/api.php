@@ -9,6 +9,8 @@ Route::get("/algorithms/number_place/{number}",[algorithm_controller::class,'pla
 Route::get("/algorithms/prefixnotation/{notation}",[algorithm_controller::class,'prefix_notation']);
 Route::get("/algorithms/isoperator/{o}",[algorithm_controller::class,'isOperator']);
 
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
